@@ -1,0 +1,199 @@
+/* ==========================================================================
+   Design Tokens — Visitor Management SaaS
+  Premium visitor operations system: graphite navigation, cool surfaces,
+  indigo brand accents, and semantic action colors.
+
+   THEMING: every surface/text/border value below is a semantic variable.
+   Components must consume these variables (never raw hex) so that the
+   html[data-theme="dark"] block at the bottom of this file can re-point
+   them without touching component CSS. Light mode (no attribute, or
+   data-theme="light") is the default value set below.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand palette (fixed, do not extend) ---- */
+  --color-navy: #151A23;        /* Graphite navigation */
+  --color-royal: #635BFF;       /* Indigo-violet brand action */
+  --color-royal-hover: #554DE8;
+  --color-royal-active: #493FD3;
+  --color-sky: #0EA5E9;         /* Cyan-blue information action */
+  --color-white: #FFFFFF;
+  --color-slate-bg: #F8FAFC;    /* Soft Slate — app background */
+
+  /* ---- Status colors (system state ONLY — never decorative) ---- */
+  --color-success: #10B981;
+  --color-success-bg: #ECFDF5;
+  --color-success-border: #A7F3D0;
+  --status-success-text: #047857;
+
+  --color-warning: #F59E0B;
+  --color-warning-bg: #FFFBEB;
+  --color-warning-border: #FDE68A;
+  --status-warning-text: #B45309;
+
+  --color-danger: #E5484D;
+  --color-danger-bg: #FDECEC;
+  --color-danger-border: #F6B7BA;
+  --status-danger-text: #B4232A;
+
+  --color-info: #38BDF8;
+  --color-info-bg: #F0F9FF;
+  --color-info-border: #BAE6FD;
+  --status-info-text: #0369A1;
+
+  /* ---- Neutral scale (derived from the Navy/Slate family — kept in-gamut) ---- */
+  --gray-50:  #F8FAFC;
+  --gray-100: #F1F5F9;
+  --gray-200: #E2E8F0;
+  --gray-300: #CBD5E1;
+  --gray-400: #94A3B8;
+  --gray-500: #64748B;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1E293B;
+  --gray-900: #0F172A;
+
+  /* ---- Semantic text / surface (light mode defaults) ---- */
+  --text-primary: var(--gray-900);
+  --text-secondary: var(--gray-600);
+  --text-muted: var(--gray-400);
+  --text-inverse: var(--color-white);
+  --text-link: var(--color-royal);
+
+  --surface-app: #F5F7FA;
+  --surface-card: var(--color-white);
+  --surface-sunken: var(--gray-50);
+  --surface-accent-subtle: #EEF0FF;
+  --surface-dark: var(--color-navy);  /* sidebar + intentionally-dark panels in both themes */
+  --surface-dark-elevated: #16213A;
+
+  --badge-neutral-bg: var(--gray-100);
+  --badge-neutral-text: var(--gray-600);
+
+  --border-default: var(--gray-200);
+  --border-strong: var(--gray-300);
+  --border-dark: rgba(255, 255, 255, 0.08); /* hairlines drawn on always-dark surfaces */
+
+  --stat-icon-color: var(--color-royal);
+
+  /* ---- Typography ---- */
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.8125rem;  /* 13px */
+  --text-base: 0.875rem; /* 14px — default UI text */
+  --text-md: 1rem;       /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.375rem;   /* 22px */
+  --text-2xl: 1.75rem;   /* 28px */
+  --text-3xl: 2.125rem;  /* 34px */
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---- Spacing (4px base unit) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* ---- Radius (deliberately modest — no oversized rounded cards) ---- */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  /* ---- Shadow (flat by default; used sparingly for overlays only) ---- */
+  --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04), 0 2px 6px rgba(16, 24, 40, 0.03);
+  --shadow-md: 0 8px 24px rgba(16, 24, 40, 0.10);
+  --shadow-focus: 0 0 0 3px rgba(99, 91, 255, 0.15);
+
+  /* ---- Overlay scrim (modal backdrops) ---- */
+  --overlay-scrim: rgba(15, 23, 42, 0.5);
+
+  /* ---- Motion (minimal, functional only) ---- */
+  --transition-fast: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-theme: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+
+  /* ---- Layout ---- */
+  --sidebar-width: 264px;
+  --sidebar-width-collapsed: 76px;
+  --topbar-height: 64px;
+  --content-max-width: 1440px;
+}
+
+/* ==========================================================================
+   Dark theme — activated via html[data-theme="dark"], set by app.js
+   (persisted in localStorage under "vms.theme") and applied as early as
+   possible by an inline script in layouts/main.php to avoid a light-mode
+   flash on refresh.
+
+   Deliberately: deep slate, not pure black. Sidebar stays the same dark
+   navy family it already used in light mode, so it doesn't visually "jump"
+   when the theme changes — only the app surfaces, cards, borders and text
+   shift.
+   ========================================================================== */
+html[data-theme="dark"] {
+  --text-primary: #F1F5F9;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-inverse: #0F172A;
+  --text-link: var(--color-sky);
+
+  --surface-app: #0B1220;             /* deep slate app background, not black */
+  --surface-card: #111C34;            /* slightly elevated dark card */
+  --surface-sunken: #0C1526;          /* recessed panels, table headers */
+  --surface-accent-subtle: rgba(37, 99, 235, 0.18);
+  --surface-dark: #0B1220;
+  --surface-dark-elevated: #16213A;
+
+  --badge-neutral-bg: rgba(148, 163, 184, 0.14);
+  --badge-neutral-text: #CBD5E1;
+
+  --border-default: #223047;
+  --border-strong: #2E4160;
+  --border-dark: rgba(255, 255, 255, 0.08);
+
+  --stat-icon-color: var(--color-sky);
+
+  --color-royal-hover: #3B82F6;
+  --color-royal-active: #60A5FA;
+
+  --color-success-bg: rgba(16, 185, 129, 0.14);
+  --color-success-border: rgba(16, 185, 129, 0.35);
+  --status-success-text: #34D399;
+
+  --color-warning-bg: rgba(245, 158, 11, 0.14);
+  --color-warning-border: rgba(245, 158, 11, 0.35);
+  --status-warning-text: #FBBF24;
+
+  --color-danger-bg: rgba(239, 68, 68, 0.14);
+  --color-danger-border: rgba(239, 68, 68, 0.35);
+  --status-danger-text: #F87171;
+
+  --color-info-bg: rgba(56, 189, 248, 0.14);
+  --color-info-border: rgba(56, 189, 248, 0.35);
+  --status-info-text: #7DD3FC;
+
+  --overlay-scrim: rgba(2, 6, 15, 0.65);
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.28);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.34), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.42);
+  --shadow-focus: 0 0 0 3px rgba(56, 189, 248, 0.28);
+}
