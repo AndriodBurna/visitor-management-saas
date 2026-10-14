@@ -1,69 +1,60 @@
-# CodeIgniter 4 Application Starter
+# Visitor Management System
 
-## What is CodeIgniter?
+A multi-organization visitor management system built with CodeIgniter 4 and MySQL. A Super Admin manages organizations, branches, and users, and staff check visitors in by organization, branch, and host, with a recorded visit history for every visitor.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Features
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+**Authentication and access control**
+- User login
+- Role-protected pages
+- Super Admin access for platform-wide administration
+- Organization status is checked at login and during active sessions
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+**Organization management**
+- Manage registered organizations and view organization details
+- Control whether an organization can access the system (active or inactive)
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+**Branch and location management**
+- Create, view, edit, and manage branches
+- View branch details
+- Each branch belongs to an organization
 
-## Installation & updates
+**User and host management**
+- Manage system users and view user details
+- Select a host during visitor registration
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+**Visitor management**
+- All Visitors directory (platform-wide view for the Super Admin)
+- Search visitors by identifying information
+- Visitor details page: contact, company, organization, and identification details
+- Visitor photo area (shows the photo if one exists, otherwise an empty state)
+- Visit history: branch, host, purpose, status, check-in time, check-out time, and notes
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+**New Check-In**
+- Select the organization receiving the visitor
+- Branch options load for the selected organization
+- Select a host, or leave the host unspecified
+- Capture the visitor's name, phone, email, and company
+- Capture identification type and number
+- Capture the purpose of the visit and additional notes
+- "Check in visitor" submission
 
-## Setup
+## Current status
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+This project is in-active development. Host selection and visitor search are working foundations: the organization and branch relationships that will fully control host availability, and richer search filters, are still to come.
 
-## Important Change with index.php
+## Built with
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+PHP, CodeIgniter 4, MySQL, HTML, CSS, JavaScript. The layout is responsive, using CSS media queries. Developed locally with XAMPP.
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+## Getting started
 
-**Please** read the user guide for a better explanation of how CI4 works!
+1. Clone the repository.
+2. Install dependencies with `composer install`.
+3. Copy `env` to `.env` and set your database details.
+4. Create a MySQL database. Import the SQL file if the repository includes one, or run `php spark migrate` if it uses migrations.
+5. Start the app with XAMPP, or run `php spark serve`.
 
-## Repository Management
+## Author
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 8.2 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Emmanuel Kalibbala · [github.com/AndriodBurna](https://github.com/AndriodBurna)
